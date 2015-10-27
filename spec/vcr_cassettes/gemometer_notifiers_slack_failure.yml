@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://hooks.slack.com/services/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
+    body:
+      encoding: UTF-8
+      string: '{"text":"Outdated gems:\n\n    <https://rubygems.org/gems/byebug|byebug>
+        (newest 6.0.2, installed 5.0.0)\n    <https://rubygems.org/gems/rspec-rails|rspec-rails>
+        (newest 0.10.3, installed 0.10.2)\n-","username":"Gemometer"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - hooks.slack.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Security-Policy:
+      - referrer no-referrer;
+      Content-Type:
+      - text/html
+      Date:
+      - Tue, 27 Oct 2015 01:15:08 GMT
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '9'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: Bad token
+    http_version:
+  recorded_at: Tue, 27 Oct 2015 01:15:06 GMT
+recorded_with: VCR 2.9.3

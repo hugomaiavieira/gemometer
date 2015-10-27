@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hipchat.com/v2/room/806888/notification?auth_token=bLalUcXYzVnAgmZ2ca67fyp5BHRLg0wWLqjpvAmB
+    body:
+      encoding: UTF-8
+      string: '{"message":"<p>Outdated gems:</p><ul><li><a href=''https://rubygems.org/gems/byebug''>byebug</a>
+        (newest 6.0.2, installed 5.0.0)</li><li><a href=''https://rubygems.org/gems/rspec-rails''>rspec-rails</a>
+        (newest 0.10.3, installed 0.10.2)</li></ul>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.hipchat.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - text/html
+      Date:
+      - Mon, 19 Oct 2015 16:36:15 GMT
+      Location:
+      - https://api.hipchat.com/v2/room/806886/history/109900b6-0c7d-436b-9a17-c8df4c3d9482
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '500'
+      X-Ratelimit-Remaining:
+      - '499'
+      X-Ratelimit-Reset:
+      - '1445272683'
+      X-Xss-Protection:
+      - 1; mode=block
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Mon, 19 Oct 2015 16:36:13 GMT
+recorded_with: VCR 2.9.3

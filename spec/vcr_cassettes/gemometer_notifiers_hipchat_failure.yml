@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hipchat.com/v2/room/806889/notification?auth_token=gAmZb5a7Yqf0lZHVLacWmcgnLj2LARpBv6zUXpwy
+    body:
+      encoding: UTF-8
+      string: '{"message":"<p>Outdated gems:</p><ul><li><a href=''https://rubygems.org/gems/byebug''>byebug</a>
+        (newest 6.0.2, installed 5.0.0)</li><li><a href=''https://rubygems.org/gems/rspec-rails''>rspec-rails</a>
+        (newest 0.10.3, installed 0.10.2)</li></ul>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.hipchat.com
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 27 Oct 2015 01:17:21 GMT
+      Server:
+      - nginx
+      X-Ratelimit-Limit:
+      - '500'
+      X-Ratelimit-Remaining:
+      - '500'
+      X-Ratelimit-Reset:
+      - '1445908942'
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "error": {
+            "code": 404,
+            "message": "Room not found",
+            "type": "Not Found"
+          }
+        }
+    http_version:
+  recorded_at: Tue, 27 Oct 2015 01:17:19 GMT
+recorded_with: VCR 2.9.3
