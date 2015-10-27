@@ -7,7 +7,7 @@ Gemometer is intended to be used on your continuous integration server to notify
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'gemometer', group: :test
+gem 'gemometer', group: :test, require: false
 ```
 
 And then execute:
