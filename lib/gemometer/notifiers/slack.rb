@@ -12,7 +12,9 @@ module Gemometer
       def message
         html = "Outdated gems:\n"
         gems.each do |g|
-          html += "\n    <https://rubygems.org/gems/#{g[:name]}|#{g[:name]}> (newest #{g[:newest]}, installed #{g[:installed]})"
+          html += "\n    <https://rubygems.org/gems/#{g[:name]}|#{g[:name]}> (newest #{g[:newest]}, installed #{g[:installed]}"
+          html += g[:requested] ? ", requested: #{g[:requested]})" : ")"
+          html +=  " in group \"#{g[:group]}\"" if g[:group]
         end
         html += "\n-"
       end

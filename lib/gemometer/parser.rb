@@ -1,6 +1,6 @@
 module Gemometer
   class Parser
-    REGEX=%r(\* ([^\s]+) \(newest ([0-9|\.]+), installed ([0-9|\.]+)\))
+    REGEX=%r(\* ([^\s]+) \(newest ([0-9|\.]+), installed ([0-9|\.]+)[\)|,](?: requested (.*[0-9|\.]+)\) in group "(\w+)")?)
 
     def initialize(str)
       @str  = str
@@ -8,7 +8,11 @@ module Gemometer
     end
 
     def parse
-      @str.scan(REGEX){ |a, b, c| @gems << { name: a, newest: b, installed: c } } if @gems.empty?
+      if @gems.empty?
+        @str.scan(REGEX) do |a, b, c, d, e|
+          @gems << { name: a, newest: b, installed: c, requested: d, group: e }
+        end
+      end
       @gems
     end
   end
