@@ -2,6 +2,8 @@
 
 Gemometer is intended to be used on your continuous integration server to notify when there are new versions of the gems used on your project. It is a primitive and free [Gemnasium](https://gemnasium.com).
 
+![Codeship Status](https://www.codeship.io/projects/10d2cd20-6eee-0133-5b8c-0a30d41a0376/status?branch=master)
+
 ## Installation
 
 Add this line to your application's Gemfile:
