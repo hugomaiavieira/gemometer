@@ -6,24 +6,29 @@ describe Gemometer::Parser do
 
   describe '#parse' do
     describe 'when is outdated' do
-      it 'should return the outdated gems array' do
+      it 'should add correctly instanciated gems on gems array' do
         mock_bundle_outdated_some
+        subject.parse
 
-        expect(subject.parse).to eql([
-          { name: 'aws-sdk',    newest: '2.1.32', installed: '1.66.0', requested: '= 1.66.0', group: 'default' },
-          { name: 'byebug',     newest: '6.0.2',  installed: '5.0.0',  requested: '~> 5.0.0', group: 'development' },
-          { name: 'shoulda',    newest: '3.0.1',  installed: '2.8.0',  requested: '~> 2.8',   group: 'test' },
-          { name: 'minitest',   newest: '5.8.2',  installed: '5.8.1',  requested: nil,        group: nil },
-          { name: 'multi_json', newest: '1.11.2', installed: '1.9.3',  requested: nil,        group: nil }
-        ])
+        expect(subject.gems).to_not be_empty
+
+        gem = subject.gems.first
+
+        expect(gem).to be_kind_of(Gemometer::Gem)
+        expect(gem.name).to eql('aws-sdk')
+        expect(gem.newest).to eql('2.1.32')
+        expect(gem.installed).to eql('1.66.0')
+        expect(gem.requested).to eql('= 1.66.0')
+        expect(gem.group).to eql('default')
       end
     end
 
     describe 'when is up to date' do
-      it 'should return an empty array' do
+      it 'should not add items on gems attribute' do
         mock_bundle_outdated_none
+        subject.parse
 
-        expect(subject.parse).to eql([])
+        expect(subject.gems).to be_empty
       end
     end
   end

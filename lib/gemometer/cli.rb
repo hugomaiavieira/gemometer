@@ -32,6 +32,10 @@ module Gemometer
           options.url = url
         end
 
+        opts.on('-l', '--listed-only', "Only verify gems listed directly on Gemfile (don't vefify dependencies)") do
+          options.listed_only = true
+        end
+
         opts.separator ''
         opts.separator 'Common options:'
 
@@ -62,7 +66,9 @@ module Gemometer
 
     def self.notify
       begin
-        gems = Gemometer::Parser.new(Gemometer::System.bundle_outdated).parse
+        parser = Gemometer::Parser.new(Gemometer::System.bundle_outdated)
+        parser.parse
+        gems = @options.listed_only ? parser.gems.listed : parser.gems
 
         Gemometer::Notifiers.const_get(@options.notifier.capitalize).new(
           gems: gems,
