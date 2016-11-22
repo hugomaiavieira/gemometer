@@ -1,0 +1,33 @@
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/ruby/tags/
+image: "ruby:2.3"
+
+# Cache gems in between builds
+cache:
+  paths:
+    - vendor/ruby
+
+before_script:
+  - ruby -v
+  - gem install bundler --no-ri --no-rdoc          # Bundler is not installed with the image
+  - bundle install --jobs $(nproc) --path vendor   # Install dependencies into ./vendor/ruby
+
+rspec:
+  script:
+  - bundle exec rake
+  artifacts:
+      paths:
+        - coverage/
+
+pages:
+  stage: deploy
+  dependencies:
+    - rspec
+  script:
+    - mv coverage/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master

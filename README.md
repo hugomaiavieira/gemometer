@@ -2,9 +2,9 @@
 
 Gemometer is intended to be used on your continuous integration server to notify when there are new versions of the gems used on your project. It is a primitive and free [Gemnasium](https://gemnasium.com).
 
-[![Codeship Status](https://codeship.com/projects/10d2cd20-6eee-0133-5b8c-0a30d41a0376/status?branch=master)](https://codeship.com/projects/116050)
-[![Code Climate](https://codeclimate.com/github/hugomaiavieira/gemometer/badges/gpa.svg)](https://codeclimate.com/github/hugomaiavieira/gemometer)
-[![Test Coverage](https://codeclimate.com/github/hugomaiavieira/gemometer/badges/coverage.svg)](https://codeclimate.com/github/hugomaiavieira/gemometer/coverage)
+[![build status](https://gitlab.com/hugomaiavieira/gemometer/badges/master/build.svg)](https://gitlab.com/hugomaiavieira/gemometer/commits/master)
+[![code climate](https://codeclimate.com/github/hugomaiavieira/gemometer/badges/gpa.svg)](https://codeclimate.com/github/hugomaiavieira/gemometer)
+[![coverage report](https://gitlab.com/hugomaiavieira/gemometer/badges/master/coverage.svg)](http://hugomaiavieira.gitlab.io/gemometer)
 
 ## Installation
 
