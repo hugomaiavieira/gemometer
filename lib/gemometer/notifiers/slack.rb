@@ -10,25 +10,25 @@ module Gemometer
       end
 
       def message
-        html = "Outdated gems:\n"
-        gems.each do |g|
-          html += "\n    <https://rubygems.org/gems/#{g[:name]}|#{g[:name]}> (newest #{g[:newest]}, installed #{g[:installed]}"
-          html += g[:requested] ? ", requested: #{g[:requested]})" : ")"
-          html +=  " in group \"#{g[:group]}\"" if g[:group]
-        end
-        html += "\n-"
+        msg = "Outdated gems:\n"
+        gems.each { |g| msg += "\n    #{ruby_gems_link(g.name)} #{g.message_line}" }
+        msg += "\n-"
       end
 
       private
 
-        def data
-          {
-            text:     message,
-            channel:  channel,
-            username: 'Gemometer'
-            # icon_url: "https://TODO:add-icon.png"
-          }.reject{ |k,v| v.nil? }
-        end
+      def data
+        {
+          text:     message,
+          channel:  channel,
+          username: 'Gemometer'
+          # icon_url: "https://TODO:add-icon.png"
+        }.reject{ |_, v| v.nil? }
       end
+
+      def ruby_gems_link(name)
+        "<https://rubygems.org/gems/#{name}|#{name}>"
+      end
+    end
   end
 end

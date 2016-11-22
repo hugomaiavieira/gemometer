@@ -26,15 +26,14 @@ module Gemometer
 
         res = http.request(req, JSON.generate(data))
 
-        %w(204 200).include?(res.code) ||
-          raise(Gemometer::NotifyError.new("#{res.code}: #{res.message}"))
+        %w(204 200).include?(res.code) || raise(Gemometer::NotifyError.new("#{res.code}: #{res.message}"))
       end
 
       private
 
-        def data
-          raise NotImplementedError
-        end
+      def data
+        raise NotImplementedError
+      end
     end
   end
 end
