@@ -9,6 +9,10 @@ module Gemometer
         super(opts)
       end
 
+      def self.mandatory_options
+        [:url]
+      end
+
       def message
         msg = "Outdated gems:\n"
         gems.each { |g| msg += "\n    #{ruby_gems_link(g.name)} #{g.message_line}" }

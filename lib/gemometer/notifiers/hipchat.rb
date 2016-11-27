@@ -8,6 +8,10 @@ module Gemometer
         msg += '</ul>'
       end
 
+      def self.mandatory_options
+        [:url]
+      end
+
       private
 
       def data

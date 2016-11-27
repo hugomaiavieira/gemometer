@@ -24,17 +24,27 @@ Or install it yourself as:
 
 ## Usage
 
-### Hipchat
+To get the help you can do a `gemometer --help`.
+
+### [Hipchat](https://www.hipchat.com)
 
 Log into hipchat.com, go to **Rooms**, select the room and go to **Integrations**, then click on "Build Your Own integration".
 
-    $ gemometer --notifier hipchat --url https://url-from-hipchat
+    $ gemometer hipchat --url https://url-from-hipchat
 
-### Slack
+### [Slack](https://slack.com)
 
 Log into slack.com, go to **Integrations** (or Configure Integrations) and add a "Incoming WebHooks"
 
-    $ gemometer --notifier slack --url https://url-from-slack
+    $ gemometer slack --url https://url-from-slack
+
+### [Mailgun](https://mailgun.com)
+
+On mailgun, your first 10,000 emails are free every month. More than enough to notify you about your outdated gems ;)
+
+Follow the instructions to add a domain. When its state became "Active", go to the domains page ("Domains" and click on the domain name) to get the **API Key** and use like this:
+
+    $ gemometer mailgun --domain your-domain.com --key <API Key> --to some@mail.com,other@mail.com
 
 ## Development
 
@@ -44,12 +54,16 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Examples
 
+### Using on GitLab CI
+
+TODO
+
 ### Using on Codeship
 
 On Codeship, you can add this line on your test settings:
 
 ``` bash
-if [[ "$CI_BRANCH" = 'master' ]]; then gem install gemometer && gemometer -n hipchat -u https://url-from-hipchat; else true; fi
+if [[ "$CI_BRANCH" = 'master' ]]; then gemometer hipchat -u https://url-from-hipchat; else true; fi
 ```
 
 This will run the gemometer only on `master` branch builds. 

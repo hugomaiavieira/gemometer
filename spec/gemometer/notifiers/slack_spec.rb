@@ -24,5 +24,11 @@ describe Gemometer::Notifiers::Slack do
     end
   end
 
+  describe '.mandatory_options' do
+    it 'should return the mandatory options' do
+      expect(described_class.mandatory_options).to eql([:url])
+    end
+  end
+
   it_behaves_like 'notifier', described_class.name.downcase
 end

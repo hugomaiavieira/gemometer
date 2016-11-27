@@ -8,9 +8,10 @@ require "gemometer/parser"
 require "gemometer/notifiers/base"
 require "gemometer/notifiers/hipchat"
 require "gemometer/notifiers/slack"
+require "gemometer/notifiers/mailgun"
 
 module Gemometer
   def self.notifiers
-    (Notifiers.constants - [:Base]).map(&:downcase)
+    @notifiers ||= (Notifiers.constants - [:Base]).map{ |n| n.to_s.downcase }
   end
 end

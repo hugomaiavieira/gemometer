@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api:key-valid@api.mailgun.net/v3/hugomaiavieira.com/messages
+    body:
+      encoding: US-ASCII
+      string: from=Gemometer+%3Cgemometer%40hugomaiavieira.com%3E&to=johndoe%40gmail.com&html=%3Cp%3EOutdated+gems%3A%3C%2Fp%3E%3Cul%3E%3Cli%3E%3Ca+href%3D%27https%3A%2F%2Frubygems.org%2Fgems%2Faws-sdk%27%3Eaws-sdk%3C%2Fa%3E+%28newest+2.1.32%2C+installed+1.66.0%2C+requested%3A+%3D+1.66.0%29+in+group+%22default%22%3C%2Fli%3E%3Cli%3E%3Ca+href%3D%27https%3A%2F%2Frubygems.org%2Fgems%2Fbyebug%27%3Ebyebug%3C%2Fa%3E+%28newest+6.0.2%2C+installed+5.0.0%29%3C%2Fli%3E%3Cli%3E%3Ca+href%3D%27https%3A%2F%2Frubygems.org%2Fgems%2Frspec-rails%27%3Erspec-rails%3C%2Fa%3E+%28newest+0.10.3%2C+installed+0.10.2%29%3C%2Fli%3E%3C%2Ful%3E&subject=Some+gems+are+Outdated
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.mailgun.net
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 15 Jan 2017 18:16:15 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '104'
+      Connection:
+      - keep-alive
+      Content-Disposition:
+      - inline
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Max-Age:
+      - '600'
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Headers:
+      - Content-Type, x-requested-with
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "id": "<20170115181615.29865.9128.96A18339@hugomaiavieira.com>",
+          "message": "Queued. Thank you."
+        }
+    http_version:
+  recorded_at: Sun, 15 Jan 2017 18:16:15 GMT
+recorded_with: VCR 3.0.0

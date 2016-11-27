@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Gemometer::Notifiers::Hipchat do
+describe Gemometer::Notifiers::Mailgun do
 
   let(:gems) do
     [
@@ -9,10 +9,8 @@ describe Gemometer::Notifiers::Hipchat do
       instance_double(Gemometer::Gem, name: 'rspec-rails', message_line: '(newest 0.10.3, installed 0.10.2)')
     ]
   end
-  let(:success_url) { 'https://api.hipchat.com/v2/room/806888/notification?auth_token=bLalUcXYzVnAgmZ2ca67fyp5BHRLg0wWLqjpvAmB' }
-  let(:failure_url) { 'https://api.hipchat.com/v2/room/806889/notification?auth_token=gAmZb5a7Yqf0lZHVLacWmcgnLj2LARpBv6zUXpwy' }
 
-  subject { described_class.new({gems: gems, url: success_url}) }
+  subject { described_class.new(gems: gems, domain: 'hugomaiavieira.com', key: 'key-valid', to: 'johndoe@gmail.com') }
 
   describe '#message' do
     it 'should return the gems list as html' do
@@ -29,9 +27,35 @@ describe Gemometer::Notifiers::Hipchat do
 
   describe '.mandatory_options' do
     it 'should return the mandatory options' do
-      expect(described_class.mandatory_options).to eql([:url])
+      expect(described_class.mandatory_options).to eql([:domain, :to, :key])
     end
   end
 
-  it_behaves_like 'notifier', described_class.name.downcase
+  describe '#notify' do
+    describe 'when outdated' do
+      it 'should send notification' do
+        VCR.use_cassette("mailgun_success") do
+          expect(subject.notify).to eql(true)
+        end
+      end
+
+      describe 'notification request error' do
+        subject { described_class.new(gems: gems, domain: 'hugomaiavieira.com', key: 'key-wrong', to: 'johndoe@gmail.com') }
+
+        it 'should raise error' do
+          VCR.use_cassette("mailgun_failure") do
+            expect{subject.notify}.to raise_error(Gemometer::NotifyError, '401: UNAUTHORIZED')
+          end
+        end
+      end
+    end
+
+    describe 'when up to date' do
+      let(:gems) { [] }
+
+      it 'should not send notification' do
+        expect(subject.notify).to eql(false)
+      end
+    end
+  end
 end
