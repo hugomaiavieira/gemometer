@@ -1,7 +1,7 @@
 module Gemometer
   class System
     def self.bundle_outdated
-      `bundle outdated`
+      system('bundle', 'outdated')
     end
   end
 end
