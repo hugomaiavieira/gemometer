@@ -34,7 +34,7 @@ Log into hipchat.com, go to **Rooms**, select the room and go to **Integrations*
 
 ### [Slack](https://slack.com)
 
-Log into slack.com, go to **Integrations** (or Configure Integrations) and add a "Incoming WebHooks"
+Log into slack.com, on the "Channel settings" go to **Add an app or integration** and add a "Incoming WebHooks".
 
     $ gemometer slack --url https://url-from-slack
 

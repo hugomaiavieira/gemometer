@@ -37,5 +37,7 @@ gemometer:
   allow_failure: true
   script:
     - gemometer mailgun -k "$MAILGUN_KEY" -d hugomaiavieira.com -t hugomaiavieira@gmail.com
+    - gemometer slack -u "$SLACK_URL"
+    - gemometer hipchat -u "$HIPCHAT_URL"
   only:
     - master
