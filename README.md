@@ -56,7 +56,18 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ### Using on GitLab CI
 
-TODO
+Add the MAILGUN_KEY [secret variable](http://docs.gitlab.com/ee/ci/variables/README.html#secret-variables) with Mailgun API Key.
+
+Then, add this to your *.gitlab-ci.yml*:
+
+``` yml
+gemometer:
+  stage: deploy
+  script:
+    - if [[ "$CI_BRANCH" = 'master' ]]; then gemometer mailgun -k $MAILGUM_KEY -d yourdomain.com -t your@email.com; else true; fi
+  only:
+    - master
+```
 
 ### Using on Codeship
 
@@ -66,7 +77,7 @@ On Codeship, you can add this line on your test settings:
 if [[ "$CI_BRANCH" = 'master' ]]; then gemometer hipchat -u https://url-from-hipchat; else true; fi
 ```
 
-This will run the gemometer only on `master` branch builds. 
+This will run the gemometer only on `master` branch builds.
 
 **Note**: The most important output of your CI should be the last one, so it's a good idea to do this before the tests commands.
 

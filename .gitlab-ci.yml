@@ -14,10 +14,10 @@ before_script:
 
 rspec:
   script:
-  - bundle exec rake
+    - bundle exec rake
   artifacts:
-      paths:
-        - coverage/
+    paths:
+      - coverage/
 
 pages:
   stage: deploy
@@ -29,5 +29,12 @@ pages:
     paths:
       - public
     expire_in: 30 days
+  only:
+    - master
+
+gemometer:
+  stage: deploy
+  script:
+    - if [[ "$CI_BRANCH" = 'master' ]]; then bundle exec rake install:local && gemometer mailgun -k $MAILGUM_KEY -d hugomaiavieira.com -t hugomaiavieira@gmail.com; else true; fi
   only:
     - master
