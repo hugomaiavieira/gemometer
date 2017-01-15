@@ -36,6 +36,6 @@ gemometer:
   stage: deploy
   allow_failure: true
   script:
-    - gemometer mailgun -k $MAILGUM_KEY -d hugomaiavieira.com -t hugomaiavieira@gmail.com
+    - gemometer mailgun -k "$MAILGUN_KEY" -d hugomaiavieira.com -t hugomaiavieira@gmail.com
   only:
     - master

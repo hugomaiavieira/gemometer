@@ -63,7 +63,7 @@ gemometer:
   stage: deploy
   allow_failure: true
   script:
-    - gemometer hipchat $HIPCHAT_URL
+    - gemometer hipchat -u "$HIPCHAT_URL"
   only:
     - master
 ```
