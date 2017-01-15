@@ -34,7 +34,8 @@ pages:
 
 gemometer:
   stage: deploy
+  allow_failure: true
   script:
-    - if [[ "$CI_BRANCH" = 'master' ]]; then bundle exec rake install:local && gemometer mailgun -k $MAILGUM_KEY -d hugomaiavieira.com -t hugomaiavieira@gmail.com; else true; fi
+    - gemometer mailgun -k $MAILGUM_KEY -d hugomaiavieira.com -t hugomaiavieira@gmail.com
   only:
     - master

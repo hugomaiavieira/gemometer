@@ -56,15 +56,14 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ### Using on GitLab CI
 
-Add the MAILGUN_KEY [secret variable](http://docs.gitlab.com/ee/ci/variables/README.html#secret-variables) with Mailgun API Key.
-
-Then, add this to your *.gitlab-ci.yml*:
+Add needed [secret variables](http://docs.gitlab.com/ee/ci/variables/README.html#secret-variables) (Hipchat URL for example). Then, add this to your *.gitlab-ci.yml*:
 
 ``` yml
 gemometer:
   stage: deploy
+  allow_failure: true
   script:
-    - if [[ "$CI_BRANCH" = 'master' ]]; then gemometer mailgun -k $MAILGUM_KEY -d yourdomain.com -t your@email.com; else true; fi
+    - gemometer hipchat $HIPCHAT_URL
   only:
     - master
 ```
